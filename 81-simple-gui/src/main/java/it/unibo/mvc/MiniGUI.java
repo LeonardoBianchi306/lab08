@@ -3,6 +3,7 @@ package it.unibo.mvc;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -35,15 +36,28 @@ public class MiniGUI {
         canvas.setLayout(new BorderLayout());
 
         //Part 1
-        final JPanel canvas2 = new JPanel();
-        canvas2.setLayout(new BoxLayout(canvas2, BoxLayout.X_AXIS));
-        canvas.add(canvas2, BorderLayout.CENTER);
-        final JButton write = new JButton("Print a random number on standard output");
-        canvas2.add(write);
+        final JPanel northPanel = new JPanel();
+        northPanel.setLayout(new BoxLayout(northPanel, BoxLayout.X_AXIS));
 
-        //Part 2
+        JLabel text = new JLabel("Result");
+        TextField resuTextField = new TextField();
+        resuTextField.setEditable(false);
+
+        northPanel.add(text, BorderLayout.NORTH);
+        northPanel.add(resuTextField, BorderLayout.NORTH);
+        canvas.add(northPanel, BorderLayout.NORTH);
+
+        /*Part 2
         TextField text = new TextField("Result");
         canvas.add(text, BorderLayout.NORTH);
+        */
+       final JPanel panel = new JPanel();
+       panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+       canvas.add(panel, BorderLayout.CENTER);
+
+
+       final JButton write = new JButton("Print a random number on standard output");
+       panel.add(write);
 
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,7 +67,9 @@ public class MiniGUI {
         write.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                IO.println(randomGenerator.nextInt());
+                final int random = randomGenerator.nextInt();
+                IO.println(random);
+                resuTextField.setText(Integer.toString(random));
             }
         });
     }
