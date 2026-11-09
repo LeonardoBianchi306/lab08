@@ -35,7 +35,7 @@ public class MiniGUI {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
 
-        //Part 1
+        
         final JPanel northPanel = new JPanel();
         northPanel.setLayout(new BoxLayout(northPanel, BoxLayout.X_AXIS));
 
@@ -51,13 +51,13 @@ public class MiniGUI {
         TextField text = new TextField("Result");
         canvas.add(text, BorderLayout.NORTH);
         */
-       final JPanel panel = new JPanel();
-       panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
-       canvas.add(panel, BorderLayout.CENTER);
+       final JPanel panelButton = new JPanel();
+       panelButton.setLayout(new BoxLayout(panelButton, BoxLayout.X_AXIS));
+       canvas.add(panelButton, BorderLayout.CENTER);
 
 
        final JButton write = new JButton("Print a random number on standard output");
-       panel.add(write);
+       panelButton.add(write);
 
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
